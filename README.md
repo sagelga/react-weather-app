@@ -6,7 +6,7 @@ a weather app created in React. Powered by Tailwind CSS and OpenWeatherMap API.
 
 ## Description
 
-This is a weather app created in React. It uses Tailwind CSS for styling and OpenWeatherMap API for fetching weather data. Uses Icons8 for weather and Unsplash for background. We deploy the source code using Netlify.
+This is a React-based weather application that leverages Tailwind CSS for styling and the OpenWeatherMap API for fetching weather data. Additionally, it utilizes Icons8 for weather icons and Unsplash for background images. The source code is deployed using Netlify.
 
 Visit [http://weather-dev.sagelga.com](http://weather-dev.sagelga.com/) to see the app in action.
 
