@@ -1,3 +1,6 @@
+import Dashboard from './Dashboard';
+import TemperatureBody from './TemperatureBody';
+
 const API = {
     // OpenWeatherMap API
     weather: {
@@ -56,24 +59,17 @@ function Body() {
     const location = 'Bangkok';
 
     // Get weather data from OpenWeatherMap API
-    getWeatherData(location);
+    const weatherData = getWeatherData(location);
 
     // Get Unsplash image from Unsplash API
-    getUnsplashImage(location);
+    const unsplashImage = getUnsplashImage(location);
 
     return (
         <div className="body">
-            {/* shows the basic information */}
-            <h1 class="city">in {location}, it's</h1>
-            <h2 class="current-temp">40 C°</h2>
-            <h2 class="feelsLike-temp">Feels like 40 C°</h2>
-
-            {/* shows the image of the location */}
-            <img
-                src="https://source.unsplash.com/1600x900/?{location}"
-                alt="{location}"
-            />
+            <TemperatureBody location={location} />
+            <Dashboard />
         </div>
     );
 }
+
 export default Body;

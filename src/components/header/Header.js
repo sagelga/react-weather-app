@@ -1,16 +1,13 @@
-import SearchBar from './SearchBar';
+// import SearchBar from './SearchAppBar';
 import Announcement from './Announcement';
+import Searchbar from './Searchbar';
 
 // https://tailwindcomponents.com/component/header
 function Header() {
     return (
         <div>
-            <Announcement />
-            <div className="bg-white shadow">
-                <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    <SearchBar></SearchBar>
-                </div>
-            </div>
+            <Announcement message="" />
+            <Searchbar />
         </div>
     );
 }

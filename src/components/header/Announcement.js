@@ -1,9 +1,5 @@
-function Announcement() {
-    return (
-        <div className="announcement">
-            <span>Alert: Hurricanes</span>
-        </div>
-    );
+function Announcement(props) {
+    return <div className="announcement">{props.message}</div>;
 }
 
 export default Announcement;
