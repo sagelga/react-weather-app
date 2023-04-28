@@ -14,7 +14,7 @@ Visit [http://weather-dev.sagelga.com](http://weather-dev.sagelga.com/) to see t
 
 -   React [https://react.dev/learn](https://react.dev/learn)
 -   Tailwind CSS [https://tailwindcss.com/](https://tailwindcss.com/)
--   Material UI [https://material-ui.com/](https://material-ui.com/)
+-   React Material UI [https://mui.com/](https://mui.com/)
 -   Open Weather Map API [https://openweathermap.org/api](https://openweathermap.org/api)
 -   Unsplash API [https://unsplash.com/developers](https://unsplash.com/developers)
 -   Icons8 [https://icons8.com/](https://icons8.com/)
