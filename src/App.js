@@ -1,13 +1,9 @@
 // import logo from './logo.svg';
 import './App.css';
-import Search from './components/search/search';
+import React from 'react';
 
 function App() {
-    return (
-        <div className="App">
-            <Search />
-        </div>
-    );
+    return <div className="App"></div>;
 }
 
 export default App;
