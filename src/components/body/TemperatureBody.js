@@ -1,3 +1,5 @@
+import React from 'react'
+
 function TemperatureBody(props) {
     return (
         <div className="temperature-body">

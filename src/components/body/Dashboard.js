@@ -1,3 +1,4 @@
+import React from 'react'
 import CardGallery from './CardGallery'
 
 function Dashboard() {

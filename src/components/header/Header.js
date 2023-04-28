@@ -1,3 +1,4 @@
+import React from 'react'
 import Announcement from './Announcement'
 import Searchbar from './Searchbar'
 
