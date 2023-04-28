@@ -1,5 +1,5 @@
 function Announcement(props) {
-    return <div className="announcement">{props.message}</div>;
+  return <div className="announcement">{props.message}</div>
 }
 
-export default Announcement;
+export default Announcement
