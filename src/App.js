@@ -7,13 +7,13 @@ import Footer from './components/footer/Footer'
 
 // Main App
 function App() {
-  return (
-    <div className="App">
-      <Header />
-      <Body />
-      <Footer />
-    </div>
-  )
+    return (
+        <div className="App">
+            <Header />
+            <Body />
+            <Footer />
+        </div>
+    )
 }
 
 export default App
