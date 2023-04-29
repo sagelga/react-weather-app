@@ -1,8 +1,10 @@
 # React Weather App
 
-a weather app created in React. Powered by Tailwind CSS and OpenWeatherMap API.
+a weather app created in React. Powered by OpenWeatherMap and Unsplash.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/ee9346dd-9372-4b34-851e-ee7d4f2689d0/deploy-status)](https://app.netlify.com/sites/frabjous-dusk-79cc84/deploys)
+| Production                                                                                                                                                                | Development |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| [![Netlify Status](https://api.netlify.com/api/v1/badges/ee9346dd-9372-4b34-851e-ee7d4f2689d0/deploy-status)](https://app.netlify.com/sites/frabjous-dusk-79cc84/deploys) |             |
 
 ## Description
 
@@ -23,7 +25,6 @@ npm start
 ## Resources
 
 -   React [https://react.dev/learn](https://react.dev/learn)
--   Tailwind CSS [https://tailwindcss.com/](https://tailwindcss.com/)
 -   Open Weather Map API [https://openweathermap.org/api](https://openweathermap.org/api)
 -   Unsplash API [https://unsplash.com/developers](https://unsplash.com/developers)
 -   Icons8 [https://icons8.com/](https://icons8.com/)

@@ -11,3 +11,19 @@
     max-width: 1000px;
     margin: 20px auto;
 }
+
+.announcement {
+    background-color: palevioletred;
+}
+
+.header {
+    background-color: palegoldenrod;
+}
+
+.searchbox {
+    padding: 10px;
+}
+
+.searchbox-input {
+    width: 80%;
+}
