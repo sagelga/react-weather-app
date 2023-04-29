@@ -9,9 +9,18 @@ a weather app created in React. Powered by OpenWeatherMap and Unsplash.
 ## Description
 
 This is a React-based weather application that leverages the OpenWeatherMap API for fetching weather data and Tailwind CSS for styling.
-Additionally, it utilizes Icons8 for weather icons and Unsplash for background images. The source code is deployed using Netlify.
+Additionally, it utilizes Icons8 for weather icons and Unsplash for background images. The source code is later deployed, tested, and hosted on Netlify.
 
 Visit [http://weather-dev.sagelga.com](http://weather-dev.sagelga.com/) to see the app in action.
+
+## Installation
+
+If you wish to run the app locally, you can clone the repository and run the following commands:
+
+```bash
+npm install
+npm start
+```
 
 ## Resources
 
@@ -21,3 +30,5 @@ Visit [http://weather-dev.sagelga.com](http://weather-dev.sagelga.com/) to see t
 -   Icons8 [https://icons8.com/](https://icons8.com/)
 -   Tailwind CSS [https://tailwindcss.com/](https://tailwindcss.com/)
 -   React Material UI [https://mui.com/](https://mui.com/)
+-   Netlify [https://www.netlify.com/](https://www.netlify.com/)
+-   Netlify CLI [https://docs.netlify.com/cli/get-started/](https://docs.netlify.com/cli/get-started/)
