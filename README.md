@@ -1,10 +1,6 @@
-# React Weather App
+# React Weather App [![Netlify Status](https://api.netlify.com/api/v1/badges/ee9346dd-9372-4b34-851e-ee7d4f2689d0/deploy-status)](https://app.netlify.com/sites/frabjous-dusk-79cc84/deploys)
 
 a weather app created in React. Powered by OpenWeatherMap and Unsplash.
-
-| Production                                                                                                                                                                | Development |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| [![Netlify Status](https://api.netlify.com/api/v1/badges/ee9346dd-9372-4b34-851e-ee7d4f2689d0/deploy-status)](https://app.netlify.com/sites/frabjous-dusk-79cc84/deploys) |             |
 
 ## Description
 
