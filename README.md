@@ -13,6 +13,10 @@ Additionally, it utilizes Icons8 for weather icons and Unsplash for background i
 
 Visit [http://weather-dev.sagelga.com](http://weather-dev.sagelga.com/) to see the app in action.
 
+## Prequisites
+
+-   Node.js version 16.20.0 or higher
+
 ## Installation
 
 If you wish to run the app locally, you can clone the repository and run the following commands:
@@ -22,9 +26,16 @@ npm install
 npm start
 ```
 
+but we deployed this project in Netlify. You will have to use the Netlify CLI to run the project locally.
+
+```bash
+npm install -g netlify-cli
+netlify dev
+```
+
 ## Open Weather Map API
 
-```
+```json
 {
     "coord": {
         "lon": 100.6102,
