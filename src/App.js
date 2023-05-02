@@ -11,13 +11,10 @@ import TemperatureBody from './components/body/TemperatureBody'
 import Dashboard from './components/body/Dashboard'
 import Footer from './components/footer/Footer'
 
-const API = {
-    // OpenWeatherMap API
-    weather: {
-        key: '1bd8a19c06ea193a3d3915edee0edd9c',
-        base: 'https://api.openweathermap.org/data/2.5/weather',
-    },
-}
+const openWeatherUrl = 'https://api.openweathermap.org/data/2.5/weather'
+const openWeatherKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY
+// const unsplashUrl = 'https://api.unsplash.com/photos/random'
+// const unsplashKey = process.env.REACT_APP_UNSPLASH_API_KEY
 
 // Get weather data from OpenWeatherMap API by search query
 // async function getWeatherData(location) {
@@ -88,7 +85,7 @@ function App() {
                 const lon = position.coords.longitude
                 try {
                     const response = await fetch(
-                        `${API.weather.base}?lat=${lat}&lon=${lon}&units=metric&APPID=${API.weather.key}`
+                        `${openWeatherUrl}?lat=${lat}&lon=${lon}&units=metric&APPID=${openWeatherKey}`
                     )
                     const data = await response.json()
                     setWeatherData(data)
