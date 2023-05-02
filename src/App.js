@@ -89,6 +89,7 @@ function App() {
                     )
                     const data = await response.json()
                     setWeatherData(data)
+                    console.log(data)
                 } catch (err) {
                     setWeatherData(initialWeatherState)
                 }
