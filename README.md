@@ -22,6 +22,57 @@ npm install
 npm start
 ```
 
+## Open Weather Map API
+
+```
+{
+    "coord": {
+        "lon": 100.6102,
+        "lat": 13.6497
+    },
+    "weather": [
+        {
+            "id": 500,
+            "main": "Rain",
+            "description": "light rain",
+            "icon": "10d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 35.97,
+        "feels_like": 41.35,
+        "temp_min": 34.99,
+        "temp_max": 38.9,
+        "pressure": 1004,
+        "humidity": 46
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 5.14,
+        "deg": 180
+    },
+    "rain": {
+        "1h": 0.18
+    },
+    "clouds": {
+        "all": 20
+    },
+    "dt": 1682760755,
+    "sys": {
+        "type": 1,
+        "id": 9241,
+        "country": "TH",
+        "sunrise": 1682722630,
+        "sunset": 1682767955
+    },
+    "timezone": 25200,
+    "id": 1618154,
+    "name": "Ban Khlong Samrong",
+    "cod": 200
+}
+```
+
 ## Resources
 
 -   React [https://react.dev/learn](https://react.dev/learn)

@@ -1,11 +1,21 @@
 import React from 'react'
+import { useEffect } from 'react'
+// import Dashboard from './Dashboard'
 
 function TemperatureBody(props) {
     return (
-        <div className="temperature-body">
-            <h1 class="city">in {props.location}, it's</h1>
-            <h2 class="current-temp">40 C°, Partially Cloudy</h2>
-            <h2 class="feelsLike-temp">Feels like 40 C°</h2>
+        <div className="body-main">
+            <div className="body-temperature-main-card">
+                <h2 className="city">in {props.weatherData.name}, it's</h2>
+                <h1 className="current">
+                    {props.weatherData.main.temp} C° with{' '}
+                    {props.weatherData.weather[0].description}
+                </h1>
+                <h2>
+                    Feels like {props.weatherData.main.feels_like} C° with{' '}
+                    {props.weatherData.main.humidity}% humidity
+                </h2>
+            </div>
         </div>
     )
 }
