@@ -116,15 +116,8 @@ function App() {
                 <Announcement message="Hello World" />
                 {/* <Searchbox getSearchQuery={searchHandler} /> */}
             </header>
-            <TemperatureBody
-                name={weatherData.name}
-                temp={weatherData.main.temp}
-                description={weatherData.weather[0].description}
-                feels_like={weatherData.main.feels_like}
-                humidity={weatherData.main.humidity}
-                weatherData={weatherData}
-            />
-            <Dashboard />
+            <TemperatureBody weatherData={weatherData} />
+            <Dashboard weatherData={weatherData} />
             <footer>
                 <Footer />
             </footer>
