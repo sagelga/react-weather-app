@@ -6,12 +6,14 @@ import './App.css'
 
 // Components
 import Announcement from './components/header/Announcement'
-import Searchbox from './components/header/Searchbox'
+// import Searchbox from './components/header/Searchbox'
 import TemperatureBody from './components/body/TemperatureBody'
 import Dashboard from './components/body/Dashboard'
 import Footer from './components/footer/Footer'
 
-const openWeatherUrl = 'https://api.openweathermap.org/data/2.5/weather'
+const openWeatherCurrentUrl = 'https://api.openweathermap.org/data/2.5/weather'
+// const openWeatherForecastURL =
+//     'https://api.openweathermap.org/data/2.5/forecast'
 const openWeatherKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY
 // const unsplashUrl = 'https://api.unsplash.com/photos/random'
 // const unsplashKey = process.env.REACT_APP_UNSPLASH_API_KEY
@@ -43,8 +45,18 @@ const openWeatherKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY
 function App() {
     // Create a dummy data before fetching data from OpenWeatherMap API
     const initialWeatherState = {
-        coord: { lon: 0, lat: 0 },
-        weather: [{ id: 0, main: 'N/A', description: 'N/A', icon: '' }],
+        coord: {
+            lon: 0,
+            lat: 0,
+        },
+        weather: [
+            {
+                id: 0,
+                main: '',
+                description: '',
+                icon: '',
+            },
+        ],
         base: '',
         main: {
             temp: 0,
@@ -57,8 +69,17 @@ function App() {
             grnd_level: 0,
         },
         visibility: 0,
-        wind: { speed: 0, deg: 0, gust: 0 },
-        clouds: { all: 0 },
+        wind: {
+            speed: 0,
+            deg: 0,
+            gust: 0,
+        },
+        rain: {
+            '1h': 0,
+        },
+        clouds: {
+            all: 0,
+        },
         dt: 0,
         sys: {
             type: 0,
@@ -69,13 +90,13 @@ function App() {
         },
         timezone: 0,
         id: 0,
-        name: 'N/A',
+        name: '',
         cod: 0,
     }
-    const [searchQuery, setSearchQuery] = useState('')
-    const [location, setLocation] = useState('')
+    // const [searchQuery, setSearchQuery] = useState('')
+    // const [location, setLocation] = useState('')
     const [weatherData, setWeatherData] = useState(initialWeatherState)
-    const [unsplashImage, setUnsplashImage] = useState('')
+    // const [unsplashImage, setUnsplashImage] = useState('')
 
     // Get weather data from OpenWeatherMap API by user's location
     async function getWeatherDataFromLocation() {
@@ -85,7 +106,7 @@ function App() {
                 const lon = position.coords.longitude
                 try {
                     const response = await fetch(
-                        `${openWeatherUrl}?lat=${lat}&lon=${lon}&units=metric&APPID=${openWeatherKey}`
+                        `${openWeatherCurrentUrl}?lat=${lat}&lon=${lon}&units=metric&APPID=${openWeatherKey}`
                     )
                     const data = await response.json()
                     setWeatherData(data)
@@ -104,14 +125,14 @@ function App() {
     }, [])
 
     // Process search query created by Searchbox component
-    function searchHandler(query) {
-        setSearchQuery(query)
-    }
+    // function searchHandler(query) {
+    //     setSearchQuery(query)
+    // }
 
     return (
         <div className="App">
             <header>
-                <Announcement message="Hello World" />
+                <Announcement message="Under Development at github.com/sagelga/react-weather-app" />
                 {/* <Searchbox getSearchQuery={searchHandler} /> */}
             </header>
             <TemperatureBody weatherData={weatherData} />
