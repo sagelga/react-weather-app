@@ -6,18 +6,28 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 
 function BasicCard(props) {
+    let dataValue = props.value
+    const isValueBlank = (value) => {
+        return value === undefined || value === null || value === ''
+    }
+
+    // If the value is blank, then show value as - (dash).
+    // Else, show the value as normal
+    if (isValueBlank(props.value)) {
+        dataValue = 'N/A'
+    }
+
     return (
         <div className="basic-card">
             <Card variant="outlined">
                 <CardContent>
                     <img src={props.icon} alt="Card Icon" loading="lazy" />
                     <Typography variant="h5" component="div">
-                        {props.value}
+                        {dataValue}
                     </Typography>
                     <Typography sx={{ mb: 1.5 }} color="text.secondary">
                         {props.title}
                     </Typography>
-                    {/* <Typography variant="body2">details</Typography> */}
                 </CardContent>
             </Card>
         </div>
