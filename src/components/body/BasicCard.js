@@ -1,31 +1,35 @@
 // https://mui.com/material-ui/react-card/
 
 import React from 'react'
-import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 
 function BasicCard(props) {
+    let dataValue = props.value
+    const isValueBlank = (value) => {
+        return value === undefined || value === null || value === ''
+    }
+
+    // If the value is blank, then show value as - (dash).
+    // Else, show the value as normal
+    if (isValueBlank(props.value)) {
+        dataValue = 'N/A'
+    }
+
     return (
         <div className="basic-card">
-            <Box>
-                <Card variant="outlined">
-                    <CardContent>
-                        <img
-                            src="https://img.icons8.com/color/48/null/sun--v1.png"
-                            alt="Card Icon"
-                        />
-                        <Typography variant="h5" component="div">
-                            Title
-                        </Typography>
-                        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                            subtitle
-                        </Typography>
-                        <Typography variant="body2">information</Typography>
-                    </CardContent>
-                </Card>
-            </Box>
+            <Card variant="outlined">
+                <CardContent>
+                    <img src={props.icon} alt="Card Icon" loading="lazy" />
+                    <Typography variant="h5" component="div">
+                        {dataValue}
+                    </Typography>
+                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                        {props.title}
+                    </Typography>
+                </CardContent>
+            </Card>
         </div>
     )
 }
