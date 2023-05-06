@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Announcement from './components/header/Announcement'
 import Navbar from './components/header/Navbar'
+import MenuTab from './components/header/MenuTab.js'
 import TemperatureBody from './components/body/TemperatureBody'
 import Dashboard from './components/body/Dashboard'
 import Footer from './components/footer/Footer'
@@ -136,8 +137,9 @@ function App() {
                 <Navbar setSearchQuery={setSearchQuery} />
                 <Announcement message="Under Development at github.com/sagelga/react-weather-app" />
             </header>
-            {/* <TemperatureBody weatherData={weatherData} /> */}
-            {/* <Dashboard weatherData={weatherData} /> */}
+            <MenuTab />
+            <TemperatureBody weatherData={weatherData} />
+            <Dashboard weatherData={weatherData} />
             <footer>
                 <Footer />
             </footer>
