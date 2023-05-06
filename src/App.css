@@ -1,10 +1,7 @@
-.App {
-    text-align: center;
-}
-
 .App-logo {
     height: 40vmin;
     pointer-events: none;
+    text-align: center;
 }
 
 .container {
@@ -12,25 +9,32 @@
     margin: 20px auto;
 }
 
+.footer {
+    text-align: center;
+}
+
 .announcement {
     background-color: palevioletred;
-    position: fixed;
-    left: 0px;
-    top: 0px;
+    text-align: center;
 }
 
 .header {
     background-color: palegoldenrod;
 }
 
+.dashboard {
+    padding: 15px;
+}
+
+textarea {
+    color: grey;
+}
+
 .searchbox {
     padding: 10px;
+    border-radius: 15px;
 }
 
 .searchbox-input {
     width: 80%;
-}
-
-.dashboard {
-    padding: 15px;
 }

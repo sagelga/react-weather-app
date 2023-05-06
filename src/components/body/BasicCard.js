@@ -21,7 +21,12 @@ function BasicCard(props) {
         <div className="basic-card">
             <Card variant="outlined">
                 <CardContent>
-                    <img src={props.icon} alt="Card Icon" loading="lazy" />
+                    <img
+                        src={props.icon}
+                        alt="Card Icon"
+                        height={props.iconSize + 'px'}
+                        width={props.iconSize + 'px'}
+                    />
                     <Typography variant="h5" component="div">
                         {dataValue}
                     </Typography>

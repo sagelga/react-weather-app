@@ -29,10 +29,30 @@ npm install -g netlify-cli
 netlify dev
 ```
 
-## Open Weather Map API
+## Components
+
+```mermaid
+graph TD
+    App --> Announcement
+    App --> Searchbox
+    App --> TemperatureBody
+    TemperatureBody --> BasicCard
+    App --> Dashboard
+    App --> Snackbar
+    App --> Footer
+
+```
+
+## APIs
+
+### Open Weather Map API
 
 -   Current Weather Data [https://openweathermap.org/current](https://openweathermap.org/current)
 -   5 days Forecast Weather Data [https://openweathermap.org/forecast5](https://openweathermap.org/forecast5)
+
+### Unsplash API
+
+-   Unsplash API [https://unsplash.com/developers](https://unsplash.com/developers)
 
 ## Resources
 

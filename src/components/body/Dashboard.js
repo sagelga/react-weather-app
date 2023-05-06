@@ -1,7 +1,6 @@
 import React from 'react'
-// import Container from '@mui/icons-material/Container'
-import BasicCard from './BasicCard'
 import Grid from '@mui/material/Unstable_Grid2'
+import BasicCard from './BasicCard'
 
 const numberToPercent = (number) => {
     return number + '%'
@@ -17,11 +16,6 @@ const secondToTime = (seconds) => {
 }
 
 const timeUnitFormat = (hour, minute) => {
-    console.log(
-        hour.toString().padStart(2, '0') +
-            ':' +
-            minute.toString().padStart(2, '0')
-    )
     return (
         hour.toString().padStart(2, '0') +
         ':' +
@@ -33,74 +27,79 @@ function Dashboard(props) {
     // For each row, there will be 2-4 cards per row (depends on the screen size)
     // Each card will contains the title icon, title, main value, and description
 
+    const iconSize = 42
+    const iconsBaseUrl = `https://img.icons8.com/fluency/${iconSize}/null/`
+    const iconsSuffix = '.png'
+
     return (
         <div className="dashboard">
             <Grid container spacing={2}>
                 {[
                     {
-                        icon: 'https://img.icons8.com/fluency/48/null/sunrise.png',
+                        icon: 'sunrise',
                         title: 'Sunrise',
                         value: epochToTime(props.weatherData.sys.sunrise),
                     },
                     {
-                        icon: 'https://img.icons8.com/fluency/48/null/sunset.png',
+                        icon: 'sunset',
                         title: 'Sunset',
                         value: epochToTime(props.weatherData.sys.sunset),
                     },
                     {
-                        icon: 'https://img.icons8.com/fluency/48/null/wind.png',
+                        icon: 'wind',
                         title: 'Wind Speed',
                         value: props.weatherData.wind.speed,
                     },
                     {
-                        icon: 'https://img.icons8.com/fluency/48/null/windsock.png',
+                        icon: 'windsock',
                         title: 'Wind Degree',
                         value: props.weatherData.wind.deg,
                     },
                     {
-                        icon: 'https://img.icons8.com/fluency/48/null/windchill.png',
+                        icon: 'windchill',
                         title: 'Wind Gust',
                         value: props.weatherData.wind.gust,
                     },
                     {
-                        icon: 'https://img.icons8.com/fluency/48/null/cloud.png',
+                        icon: 'cloud',
                         title: 'Cloud',
                         value: numberToPercent(props.weatherData.clouds.all),
                     },
                     {
-                        icon: 'https://img.icons8.com/fluency/48/null/atmospheric-pressure.png',
+                        icon: 'atmospheric-pressure',
                         title: 'Pressure',
                         value: props.weatherData.main.pressure,
                     },
                     {
-                        icon: 'https://img.icons8.com/fluency/48/null/visible.png',
+                        icon: 'visible',
                         title: 'Visibility',
                         value: props.weatherData.visibility,
                     },
                     {
-                        icon: 'https://img.icons8.com/fluency/48/null/temperature.png',
+                        icon: 'temperature',
                         title: 'Feels like',
                         value: props.weatherData.main.feels_like,
                     },
                     {
-                        icon: 'https://img.icons8.com/fluency/48/null/wet.png',
+                        icon: 'wet',
                         title: 'Humidity',
                         value: numberToPercent(props.weatherData.main.humidity),
                     },
                     {
-                        icon: 'https://img.icons8.com/fluency/48/null/timezone.png',
+                        icon: 'timezone',
                         title: 'Timezone',
                         value: secondToTime(props.weatherData.timezone),
                     },
                     {
-                        icon: 'https://img.icons8.com/fluency/48/null/world-map--v2.png',
+                        icon: 'world-map--v2',
                         title: 'Country',
                         value: props.weatherData.sys.country,
                     },
                 ].map((item) => (
                     <Grid xs={4} md={3} lg={2}>
                         <BasicCard
-                            icon={item.icon}
+                            icon={iconsBaseUrl + item.icon + iconsSuffix}
+                            iconSize={iconSize}
                             title={item.title}
                             value={item.value}
                         />
