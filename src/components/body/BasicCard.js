@@ -24,7 +24,6 @@ function BasicCard(props) {
                     <img
                         src={props.icon}
                         alt="Card Icon"
-                        loading="lazy"
                         height={props.iconSize + 'px'}
                         width={props.iconSize + 'px'}
                     />
