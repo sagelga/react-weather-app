@@ -77,7 +77,7 @@ function App() {
 
     // Get weather data from OpenWeatherMap API by search query
     async function getWeatherDataFromQuery(query) {
-        setSearchStatus('searching')
+        // setSearchStatus('searching')
 
         // Fetch data from OpenWeatherMap API
         // Example request: https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&APPID=efefefefefefefefefe
@@ -88,21 +88,25 @@ function App() {
                 // console.log(response)
 
                 if (response.ok) {
-                    setSearchStatus('success')
+                    setSearchStatus('')
                     const data = await response.json()
                     setWeatherData(data)
                     // localStorage.setItem('searchQuery', query)
                     // localStorage.setItem('weatherData', response)
                 } else if (response.status === 404) {
-                    setSearchStatus('notFound')
+                    setSearchStatus('Sorry, we could not find your location')
                 } else {
                     // throw Error(response.statusText)
-                    setSearchStatus('invalid')
+                    setSearchStatus(
+                        `Sorry, we are experiencing technical difficulties (HTTP code ${response.status})`
+                    )
                 }
             })
             .catch((err) => {
-                console.log('error', err)
-                setSearchStatus('error')
+                console.log(err)
+                setSearchStatus(
+                    'Sorry, we are experiencing error fetching weather data'
+                )
             })
     }
 
