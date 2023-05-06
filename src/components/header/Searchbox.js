@@ -1,26 +1,36 @@
 import React from 'react'
-import { useContext } from 'react'
+import Paper from '@mui/material/Paper'
+import TextField from '@mui/material/TextField'
+// import Box from '@mui/material/Box'
+// import InputBase from '@mui/material/InputBase'
+// import IconButton from '@mui/material/IconButton'
+// import SearchIcon from '@mui/icons-material/Search'
+// import Divider from '@mui/material/Divider'
 
-const MyContext = React.createContext()
-
-function Searchbox({ getSearchQuery }) {
-    const { inputData, setInputData } = useContext(MyContext)
-
-    const handleInputChange = (event) => {
-        const newValue = event.target.value
-        getSearchQuery(newValue)
-    }
-
+function Searchbox({ setSearchQuery }) {
     return (
         <div className="searchbox">
-            <form>
-                <input
-                    type="text"
-                    placeholder="Search..."
-                    className="searchbox-input"
-                    onChange={handleInputChange}
-                ></input>
-            </form>
+            <Paper>
+                {/* <Box
+                    sx={{
+                        maxWidth: '100%',
+                    }}
+                > */}
+                <TextField
+                    fullWidth
+                    multiline
+                    id="fullWidth"
+                    placeholder="Search for a city"
+                    onChange={(event) => setSearchQuery(event.target.value)}
+                />
+                {/* <InputBase
+                        placeholder="Search for a city"
+                        inputProps={{ 'aria-label': 'Search' }}
+                        value={searchQuery}
+                        onChange={(event) => setSearchQuery(event.target.value)}
+                    /> */}
+                {/* </Box> */}
+            </Paper>
         </div>
     )
 }

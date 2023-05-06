@@ -1,12 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-
-// CSS
 import './App.css'
-
-// Components
 import Announcement from './components/header/Announcement'
-// import Searchbox from './components/header/Searchbox'
+import Navbar from './components/header/Navbar'
 import TemperatureBody from './components/body/TemperatureBody'
 import Dashboard from './components/body/Dashboard'
 import Footer from './components/footer/Footer'
@@ -17,29 +13,6 @@ const openWeatherCurrentUrl = 'https://api.openweathermap.org/data/2.5/weather'
 const openWeatherKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY
 // const unsplashUrl = 'https://api.unsplash.com/photos/random'
 // const unsplashKey = process.env.REACT_APP_UNSPLASH_API_KEY
-
-// Get weather data from OpenWeatherMap API by search query
-// async function getWeatherData(location) {
-//     // Check if location is in cache
-//     if (cache[location]) {
-//         console.log(cache[location])
-//         return cache[location]
-//     }
-
-//     // Fetch data from OpenWeatherMap API
-//     const response = await fetch(
-//         `${API.weather.base}?q=${location}&units=metric&APPID=${API.weather.key}`
-//     )
-//     const data = await response.json()
-
-//     // Store data to cache
-//     cache[location] = data
-//     console.log(data)
-
-//     // setWeatherData = data
-
-//     return data
-// }
 
 // Main App
 function App() {
@@ -93,10 +66,32 @@ function App() {
         name: '',
         cod: 0,
     }
-    // const [searchQuery, setSearchQuery] = useState('')
-    // const [location, setLocation] = useState('')
+
+    const [searchQuery, setSearchQuery] = useState('')
     const [weatherData, setWeatherData] = useState(initialWeatherState)
+    // const [weatherForecastData, setWeatherForecastData] =
+    //     useState(initialWeatherState)
     // const [unsplashImage, setUnsplashImage] = useState('')
+
+    // Get weather data from OpenWeatherMap API by search query
+    async function getWeatherDataFromQuery(query) {
+        // Fetch data from OpenWeatherMap API
+        // Example request: https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&APPID=efefefefefefefefefe
+        const response = await fetch(
+            `${openWeatherCurrentUrl}?q=${query}&units=metric&APPID=${openWeatherKey}`
+        )
+            .then((response) => {
+                if (!response.ok) {
+                    console.log(response)
+                    // throw Error(response.statusText)
+                }
+                setWeatherData(response)
+            })
+            .catch((err) => {
+                setWeatherData(initialWeatherState)
+                console.log('error', err)
+            })
+    }
 
     // Get weather data from OpenWeatherMap API by user's location
     async function getWeatherDataFromLocation() {
@@ -110,33 +105,39 @@ function App() {
                     )
                     const data = await response.json()
                     setWeatherData(data)
-                    console.log(data)
                 } catch (err) {
                     setWeatherData(initialWeatherState)
+                    console.log('error', err)
                 }
             })
         }
     }
 
-    // Fetch data from OpenWeatherMap API when app is loaded
-    // This will retrive the data from user's location
-    useEffect(() => {
-        getWeatherDataFromLocation()
-    }, [])
+    // Fetch user's location and fetch OpenWeatherMap API when app is loaded
+    // useEffect(() => {
+    //     console.log('fetch with Location')
+    //     getWeatherDataFromLocation()
+    // }, [])
 
-    // Process search query created by Searchbox component
-    // function searchHandler(query) {
-    //     setSearchQuery(query)
-    // }
+    // Fetch OpenWeatherMap API using search query when searchQuery is changed
+    useEffect(() => {
+        console.log('Search Query: ' + searchQuery)
+
+        if (searchQuery) {
+            const data = getWeatherDataFromQuery(searchQuery)
+            // setWeatherData(data)
+        }
+        console.log(weatherData)
+    }, [searchQuery])
 
     return (
         <div className="App">
             <header>
+                <Navbar setSearchQuery={setSearchQuery} />
                 <Announcement message="Under Development at github.com/sagelga/react-weather-app" />
-                {/* <Searchbox getSearchQuery={searchHandler} /> */}
             </header>
-            <TemperatureBody weatherData={weatherData} />
-            <Dashboard weatherData={weatherData} />
+            {/* <TemperatureBody weatherData={weatherData} /> */}
+            {/* <Dashboard weatherData={weatherData} /> */}
             <footer>
                 <Footer />
             </footer>

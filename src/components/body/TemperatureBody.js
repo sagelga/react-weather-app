@@ -3,13 +3,23 @@ import Container from '@mui/material/Container'
 
 function TemperatureBody(props) {
     // Building variables from props and passing it to component
-    const locationName = props.weatherData.name
-    const temperature = props.weatherData.main.temp
-    const weatherCondition = props.weatherData.weather[0].description
-    const feelsLike = props.weatherData.main.feels_like
-    const humidity = props.weatherData.main.humidity
+    let locationName = ''
+    let temperature = ''
+    let weatherCondition = ''
+    let feelsLike = ''
+    let humidity = ''
+    let metric = 'C°'
 
-    const metric = 'C°'
+    try {
+        locationName = props.weatherData.name
+        temperature = props.weatherData.main.temp
+        weatherCondition = props.weatherData.weather[0].description
+        feelsLike = props.weatherData.main.feels_like
+        humidity = props.weatherData.main.humidity
+        // metric = 'C°'
+    } catch (error) {
+        console.log(error)
+    }
 
     // If there is no value for the name, return an empty div
     if (props.weatherData.name === null) {

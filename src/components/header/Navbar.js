@@ -6,18 +6,21 @@ import Grid from '@mui/material/Grid'
 import IconButton from '@mui/material/IconButton'
 import NightModeIcon from '@mui/icons-material/NightlightRound'
 
-function Navbar() {
+function Navbar({ setSearchQuery }) {
     return (
         <Box>
             <Appbar position="static">
                 <Grid container spacing={0.5}>
-                    <Grid item lg={1} className="site-logo">
-                        <img src="https://img.icons8.com/fluency/24/000000/sun.png" />
+                    <Grid item xs={1} className="site-logo">
+                        <img
+                            src="https://img.icons8.com/fluency/24/000000/sun.png"
+                            alt="Weather icon"
+                        />
                     </Grid>
-                    <Grid item lg={8}>
-                        <Searchbox />
+                    <Grid item xs={8}>
+                        <Searchbox setSearchQuery={setSearchQuery} />
                     </Grid>
-                    <Grid item lg={3} className="navbar-nightmode">
+                    <Grid item xs={3} className="navbar-nightmode">
                         <IconButton
                             type="button"
                             sx={{ p: '10px' }}
