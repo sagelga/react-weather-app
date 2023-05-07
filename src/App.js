@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import './App.css'
+import { initialWeatherState } from './data'
 import Announcement from './components/header/Announcement'
 import Navbar from './components/header/Navbar'
 import TemperatureBody from './components/body/TemperatureBody'
@@ -16,57 +17,6 @@ const openWeatherKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY
 
 // Main App
 function App() {
-    // Create a dummy data before fetching data from OpenWeatherMap API
-    const initialWeatherState = {
-        coord: {
-            lon: 0,
-            lat: 0,
-        },
-        weather: [
-            {
-                id: 0,
-                main: '',
-                description: '',
-                icon: '',
-            },
-        ],
-        base: '',
-        main: {
-            temp: 0,
-            feels_like: 0,
-            temp_min: 0,
-            temp_max: 0,
-            pressure: 0,
-            humidity: 0,
-            sea_level: 0,
-            grnd_level: 0,
-        },
-        visibility: 0,
-        wind: {
-            speed: 0,
-            deg: 0,
-            gust: 0,
-        },
-        rain: {
-            '1h': 0,
-        },
-        clouds: {
-            all: 0,
-        },
-        dt: 0,
-        sys: {
-            type: 0,
-            id: 0,
-            country: '',
-            sunrise: 0,
-            sunset: 0,
-        },
-        timezone: 0,
-        id: 0,
-        name: '',
-        cod: 0,
-    }
-
     const [searchStatus, setSearchStatus] = useState('')
     const [searchQuery, setSearchQuery] = useState('')
     const [weatherData, setWeatherData] = useState(initialWeatherState)
@@ -77,8 +27,6 @@ function App() {
 
     // Get weather data from OpenWeatherMap API by search query
     async function getWeatherDataFromQuery(query) {
-        // setSearchStatus('searching')
-
         // Fetch data from OpenWeatherMap API
         // Example request: https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&APPID=efefefefefefefefefe
         const response = await fetch(
@@ -141,11 +89,9 @@ function App() {
         }
     }
 
-    // Fetch user's location and fetch OpenWeatherMap API when app is loaded
-    // useEffect(() => {
-    //     console.log('fetch with Location')
-    //     getWeatherDataFromLocation()
-    // }, [])
+    const getDataFromLocation = () => {
+        getWeatherDataFromLocation()
+    }
 
     // Fetch OpenWeatherMap API using search query when searchQuery is changed
     useEffect(() => {
