@@ -7,6 +7,10 @@ const numberToPercent = (number) => {
 }
 
 const epochToTime = (epoch) => {
+    // This make sure that initial value (0) doesn't convert
+    if (epoch === 0) {
+        return '00:00'
+    }
     const date = new Date(epoch * 1000)
     return timeUnitFormat(date.getHours(), date.getMinutes())
 }
