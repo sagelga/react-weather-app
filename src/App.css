@@ -14,20 +14,13 @@
 }
 
 .announcement {
-    background-color: palevioletred;
+    background-color: #f73378;
     text-align: center;
-}
-
-.header {
-    background-color: palegoldenrod;
+    color: white;
 }
 
 .dashboard {
     padding: 15px;
-}
-
-textarea {
-    color: grey;
 }
 
 .searchbox {
@@ -37,4 +30,17 @@ textarea {
 
 .searchbox-input {
     width: 80%;
+}
+
+.label-image {
+    margin: 0px 4px;
+}
+
+.center {
+    margin: auto;
+    text-align: center;
+}
+
+.menu-tab {
+    background-color: #4dabf5;
 }

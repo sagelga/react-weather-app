@@ -1,9 +1,10 @@
+// Reference: https://mui.com/material-ui/react-tabs/
 import React from 'react'
 import Box from '@mui/material/Box'
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 
-export default function CenteredTabs() {
+const MenuTab = () => {
     const [value, setValue] = React.useState(0)
 
     const handleChange = (event, newValue) => {
@@ -11,14 +12,78 @@ export default function CenteredTabs() {
     }
 
     return (
-        <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
-            <Tabs value={value} onChange={handleChange} centered>
-                <Tab label="🌤 Overall" />
-                <Tab label="💨 Air" />
-                <Tab label="☀️ Sun" />
-                <Tab label="🍃 Wind" />
-                <Tab label="☔️ Rain" />
+        <Box sx={{ width: '100%' }}>
+            <Tabs
+                centered
+                value={value}
+                onChange={handleChange}
+                className="menu-tab"
+                textColor="secondary"
+                indicatorColor="secondary"
+            >
+                <Tab
+                    label={
+                        <div>
+                            <img
+                                src="https://img.icons8.com/fluency/14/null/partly-cloudy-day.png"
+                                alt="Rain"
+                                className="label-image"
+                            />
+                            Weather
+                        </div>
+                    }
+                />
+                <Tab
+                    label={
+                        <div>
+                            <img
+                                src="https://img.icons8.com/fluency/14/null/forage.png"
+                                alt="Rain"
+                                className="label-image"
+                            />
+                            Air Quality
+                        </div>
+                    }
+                />
+                <Tab
+                    label={
+                        <div>
+                            <img
+                                src="https://img.icons8.com/fluency/14/null/sun.png"
+                                alt="Rain"
+                                className="label-image"
+                            />
+                            Sun & Outdoor
+                        </div>
+                    }
+                />
+                <Tab
+                    label={
+                        <div>
+                            <img
+                                src="https://img.icons8.com/fluency/14/null/wind.png"
+                                alt="Rain"
+                                className="label-image"
+                            />
+                            Wind
+                        </div>
+                    }
+                />
+                <Tab
+                    label={
+                        <div>
+                            <img
+                                src="https://img.icons8.com/fluency/14/null/water.png"
+                                alt="Rain"
+                                className="label-image"
+                            />
+                            Rain
+                        </div>
+                    }
+                />
             </Tabs>
         </Box>
     )
 }
+
+export default MenuTab
