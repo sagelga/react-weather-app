@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Announcement from './components/header/Announcement'
 import Navbar from './components/header/Navbar'
-import MenuTab from './components/header/MenuTab.js'
 import TemperatureBody from './components/body/TemperatureBody'
 import Dashboard from './components/body/Dashboard'
 import Footer from './components/footer/Footer'
@@ -71,8 +70,9 @@ function App() {
     const [searchStatus, setSearchStatus] = useState('')
     const [searchQuery, setSearchQuery] = useState('')
     const [weatherData, setWeatherData] = useState(initialWeatherState)
+    const [weatherMetric, setWeatherMetric] = useState('metric')
     // const [weatherForecastData, setWeatherForecastData] =
-    //     useState(initialWeatherState)
+    //     useState(inittate)
     // const [unsplashImage, setUnsplashImage] = useState('')
 
     // Get weather data from OpenWeatherMap API by search query
@@ -82,7 +82,7 @@ function App() {
         // Fetch data from OpenWeatherMap API
         // Example request: https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&APPID=efefefefefefefefefe
         const response = await fetch(
-            `${openWeatherCurrentUrl}?q=${query}&units=metric&APPID=${openWeatherKey}`
+            `${openWeatherCurrentUrl}?q=${query}&units=${weatherMetric}&APPID=${openWeatherKey}`
         )
             .then(async (response) => {
                 // console.log(response)
@@ -149,7 +149,6 @@ function App() {
                 <Navbar setSearchQuery={setSearchQuery} />
                 <Announcement message={searchStatus} />
             </header>
-            <MenuTab />
             <TemperatureBody weatherData={weatherData} />
             <Dashboard weatherData={weatherData} />
             <footer>
