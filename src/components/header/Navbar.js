@@ -13,19 +13,19 @@ function Navbar({ setSearchQuery, onButtonClick }) {
             <Box>
                 <Appbar position="static">
                     <Grid container spacing={0}>
-                        <Grid item xs={1} className="site-logo center">
+                        <Grid item xs="auto" className="site-logo center">
                             <img
                                 src="https://img.icons8.com/fluency/24/000000/sun.png"
                                 alt="Weather icon"
                             />
                         </Grid>
-                        <Grid item xs={8}>
+                        <Grid item xs={10}>
                             <Searchbox
                                 setSearchQuery={setSearchQuery}
                                 onButtonClick={onButtonClick}
                             />
                         </Grid>
-                        <Grid item xs={3} className="navbar-nightmode center">
+                        <Grid item className="navbar-nightmode center">
                             <DarkModeToggle />
                             <WeatherUnitToggle />
                         </Grid>
