@@ -32,9 +32,13 @@ netlify dev
 ## Components
 
 ```mermaid
-graph TD
+graph LR
     App --> Announcement
-    App --> Searchbox
+    App --> Navbar
+    Navbar --> DarkModeToggle
+    Navbar --> MenuTab
+    Navbar --> WeatherUnitToggle
+    Navbar --> Searchbox
     App --> TemperatureBody
     TemperatureBody --> BasicCard
     App --> Dashboard
@@ -45,6 +49,8 @@ graph TD
 
 ## APIs
 
+Here's all we are going to use API for
+
 ### Open Weather Map API
 
 -   Current Weather Data [https://openweathermap.org/current](https://openweathermap.org/current)
@@ -52,7 +58,7 @@ graph TD
 
 ### Unsplash API
 
--   Unsplash API [https://unsplash.com/developers](https://unsplash.com/developers)
+-   Unsplash Image API [https://unsplash.com/developers](https://unsplash.com/developers)
 
 ## Resources
 
