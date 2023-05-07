@@ -7,7 +7,7 @@ import DarkModeToggle from './DarkModeToggle'
 import WeatherUnitToggle from './WeatherUnitToggle'
 import MenuTab from './MenuTab'
 
-function Navbar({ setSearchQuery }) {
+function Navbar({ setSearchQuery, onButtonClick }) {
     return (
         <div>
             <Box>
@@ -20,7 +20,10 @@ function Navbar({ setSearchQuery }) {
                             />
                         </Grid>
                         <Grid item xs={8}>
-                            <Searchbox setSearchQuery={setSearchQuery} />
+                            <Searchbox
+                                setSearchQuery={setSearchQuery}
+                                onButtonClick={onButtonClick}
+                            />
                         </Grid>
                         <Grid item xs={3} className="navbar-nightmode center">
                             <DarkModeToggle />

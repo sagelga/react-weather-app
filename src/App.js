@@ -113,6 +113,9 @@ function App() {
     // Get weather data from OpenWeatherMap API by user's location
     async function getWeatherDataFromLocation() {
         if (navigator.geolocation) {
+            // @todo : Replace this with spinner
+            setSearchStatus('Retriving location')
+
             navigator.geolocation.getCurrentPosition(async (position) => {
                 const lat = position.coords.latitude
                 const lon = position.coords.longitude
@@ -122,11 +125,19 @@ function App() {
                     )
                     const data = await response.json()
                     setWeatherData(data)
+                    setSearchStatus('')
                 } catch (err) {
                     setWeatherData(initialWeatherState)
                     console.log('error', err)
+                    setSearchStatus(
+                        'Sorry, we are experiencing error fetching geolocation weather data'
+                    )
                 }
             })
+        } else {
+            setSearchStatus(
+                'Sorry, we could not retrive your location. Enable geolocation'
+            )
         }
     }
 
@@ -146,7 +157,10 @@ function App() {
     return (
         <div className="App">
             <header>
-                <Navbar setSearchQuery={setSearchQuery} />
+                <Navbar
+                    setSearchQuery={setSearchQuery}
+                    onButtonClick={getDataFromLocation}
+                />
                 <Announcement message={searchStatus} />
             </header>
             <TemperatureBody weatherData={weatherData} />
