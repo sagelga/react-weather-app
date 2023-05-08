@@ -26,6 +26,7 @@ but we deployed this project in Netlify. You will have to use the Netlify CLI to
 
 ```bash
 npm install -g netlify-cli
+netlify env:import .env
 netlify dev
 ```
 
