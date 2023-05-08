@@ -1,0 +1,4 @@
+[[plugins]]
+package = "@netlify/plugin-lighthouse"
+  [plugins.inputs]
+  # Add your configuration options here
