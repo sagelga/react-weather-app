@@ -1,7 +1,11 @@
 import React from 'react'
 
-function Announcement(props) {
-    return <div className="announcement">{props.message}</div>
+const Announcement = (props) => {
+    return (
+        <div className="announcement">
+            <p>{props.message}</p>
+        </div>
+    )
 }
 
 export default Announcement

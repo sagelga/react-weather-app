@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Footer() {
+const Footer = () => {
     return (
         <p>
             Weather app made by{' '}
