@@ -1,5 +1,5 @@
 // Create a dummy data before fetching data from OpenWeatherMap API
-export const initialWeatherState = {
+export const initialWeatherData = {
     coord: {
         lon: 0,
         lat: 0,
