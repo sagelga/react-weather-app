@@ -42,8 +42,8 @@ graph LR
     Navbar --> WeatherUnitToggle
     Navbar --> Searchbox
     App --> TemperatureBody
-    TemperatureBody --> BasicCard
     App --> Dashboard
+    Dashboard --> BasicCard
     App --> Snackbar
     App --> Footer
 
@@ -60,7 +60,7 @@ Here's all we are going to use API for
 
 ### Unsplash API
 
--   Unsplash Image API [https://unsplash.com/developers](https://unsplash.com/developers)
+-   Unsplash Image API [https://unsplash.com/documentation#search-photos](https://unsplash.com/documentation#search-photos)
 
 ## Resources
 
@@ -72,3 +72,13 @@ Here's all we are going to use API for
 -   React Material UI [https://mui.com/](https://mui.com/)
 -   Netlify [https://www.netlify.com/](https://www.netlify.com/)
 -   Netlify CLI [https://docs.netlify.com/cli/get-started/](https://docs.netlify.com/cli/get-started/)
+
+## Tools
+
+Here's all the tools I used to develop this project
+
+-   Netlify
+-   Postman
+-   Visual Studio Code
+-   GitHub
+-   Cloudflare
