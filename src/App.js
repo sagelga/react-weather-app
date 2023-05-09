@@ -5,6 +5,7 @@ import { initialWeatherState } from './data'
 import Announcement from './components/header/Announcement'
 import Navbar from './components/header/Navbar'
 import TemperatureBody from './components/body/TemperatureBody'
+import TemperatureForecast from './components/body/TemperatureForecast'
 import Dashboard from './components/body/Dashboard'
 import Footer from './components/footer/Footer'
 
@@ -110,6 +111,7 @@ function App() {
                 <Announcement message={searchStatus} />
             </header>
             <TemperatureBody weatherData={weatherData} />
+            <TemperatureForecast />
             <Dashboard weatherData={weatherData} />
             <footer>
                 <Footer />
