@@ -45,10 +45,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }))
 
-const Searchbox = ({ setSearchQuery, onButtonClick }) => {
+const Searchbox = ({ setSearchQuery, getLocation }) => {
     // Handle location
     const locationButtonHandler = () => {
-        onButtonClick()
+        getLocation()
     }
 
     return (
