@@ -5,6 +5,19 @@
 .center {
     margin: auto;
     text-align: center;
+    display: flex; /* Add this to make the Search container a flex container */
+    align-items: center; /* Add this to center its child elements vertically */
+    justify-content: center;
+}
+
+/* Navbar ------------------------------ */
+.label-image {
+    margin: 0px 4px;
+}
+
+.center {
+    margin: auto;
+    text-align: center;
 }
 
 /* Navbar ------------------------------ */
@@ -14,6 +27,23 @@
     text-align: center;
 }
 
+/* Searchbox ------------------------------ */
+.searchbox {
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.searchbox-input {
+    width: 90%;
+}
+
+/* Tabs */
+.menutab-tab {
+    color: white;
+    font-weight: 600;
+}
+
+/* TemperatureBody ------------------------------ */
 /* Searchbox ------------------------------ */
 .searchbox {
     padding: 10px;
@@ -45,6 +75,25 @@
     width: 100%;
     height: auto;
     display: block;
+    position: relative;
+}
+
+.paper-container {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    z-index: 1;
+    border-radius: 5px;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.weather-image {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* Footer ------------------------------ */
@@ -57,6 +106,7 @@
     background-color: #f73378;
     text-align: center;
     color: white;
+    margin: 0px;
 }
 
 /* Dashboard ------------------------------ */

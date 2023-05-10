@@ -30,7 +30,12 @@ const TemperatureBody = (props) => {
                     </h2>
                 </Paper>
             </div>
-            <img src={unsplashImage} alt="weather" className="weather-image" />
+            <img
+                src={unsplashImage}
+                alt="weather"
+                className="weather-image"
+                height="400px"
+            />
         </Container>
     )
 }

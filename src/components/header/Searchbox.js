@@ -54,6 +54,12 @@ const Searchbox = ({ setSearchQuery, getLocation }) => {
     return (
         <div className="searchbox">
             <Search>
+                <StyledInputBase
+                    inputProps={{ 'aria-label': 'search' }}
+                    placeholder="Search for a city"
+                    onChange={(event) => setSearchQuery(event.target.value)}
+                    className="searchbox-input"
+                />
                 <IconButton
                     xs="auto"
                     aria-label="location"
@@ -61,12 +67,6 @@ const Searchbox = ({ setSearchQuery, getLocation }) => {
                 >
                     <NearMeIcon />
                 </IconButton>
-                <StyledInputBase
-                    inputProps={{ 'aria-label': 'search' }}
-                    xs={11}
-                    placeholder="Search for a city"
-                    onChange={(event) => setSearchQuery(event.target.value)}
-                />
             </Search>
         </div>
     )
