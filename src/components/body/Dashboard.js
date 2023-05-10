@@ -27,7 +27,7 @@ const timeUnitFormat = (hour, minute) => {
     )
 }
 
-function Dashboard(props) {
+const Dashboard = (props) => {
     // For each row, there will be 2-4 cards per row (depends on the screen size)
     // Each card will contains the title icon, title, main value, and description
 

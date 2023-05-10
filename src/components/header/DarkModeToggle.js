@@ -53,11 +53,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }))
 
 const DarkModeToggle = () => {
-    return (
-        <FormControlLabel
-            control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
-        />
-    )
+    return <FormControlLabel control={<MaterialUISwitch sx={{ m: 1 }} />} />
 }
 
 export default DarkModeToggle

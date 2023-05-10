@@ -1,7 +1,7 @@
 // Documentation https://mui.com/material-ui/react-snackbar/
 import React from 'react'
 
-function Snackbar(props) {
+const Snackbar = (props) => {
     return (
         <div className="snackbar">
             <Snackbar

@@ -3,6 +3,7 @@ import React from 'react'
 import Box from '@mui/material/Box'
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
+import Container from '@mui/material/Container'
 
 const MenuTab = () => {
     const [value, setValue] = React.useState(0)
@@ -12,9 +13,8 @@ const MenuTab = () => {
     }
 
     return (
-        <Box sx={{ width: '100%' }}>
+        <Box className="menu-tab-container" sx={{ width: '100%' }}>
             <Tabs
-                centered
                 value={value}
                 onChange={handleChange}
                 className="menu-tab"

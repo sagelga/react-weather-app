@@ -5,14 +5,13 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 
-function BasicCard(props) {
-    let dataValue = props.value
-    const isValueBlank = (value) => {
-        return value === undefined || value === null || value === ''
-    }
+const isValueBlank = (value) => {
+    return value === undefined || value === null || value === ''
+}
 
-    // If the value is blank, then show value as - (dash).
-    // Else, show the value as normal
+const BasicCard = (props) => {
+    // If the value is blank, then show value as N/A, else show the value as normal
+    let dataValue = props.value
     if (isValueBlank(props.value)) {
         dataValue = 'N/A'
     }
