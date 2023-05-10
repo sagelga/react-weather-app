@@ -19,18 +19,22 @@ const TemperatureBody = (props) => {
     return (
         <Container className="container">
             <div className="paper-container">
-                <Paper className="body-temperature-main-card">
-                    <h2 className="city">Currently in {locationName}, it's</h2>
-                    <h1 className="current">
-                        {temperature} {metric} with {weatherCondition}
-                    </h1>
-                    <h2>
-                        Feels like {feelsLike} {metric} with {humidity}%
-                        humidity
-                    </h2>
-                </Paper>
+                {/* <Paper className="body-temperature-main-card"> */}
+                <h2 className="city">Currently in {locationName}, it's</h2>
+                <h1 className="current">
+                    {temperature} {metric} with {weatherCondition}
+                </h1>
+                <h2>
+                    Feels like {feelsLike} {metric} with {humidity}% humidity
+                </h2>
+                {/* </Paper> */}
             </div>
-            <img src={unsplashImage} alt="weather" className="weather-image" />
+            <img
+                src={unsplashImage}
+                alt="weather"
+                className="weather-image"
+                height="400px"
+            />
         </Container>
     )
 }

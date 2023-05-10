@@ -5,6 +5,9 @@
 .center {
     margin: auto;
     text-align: center;
+    display: flex; /* Add this to make the Search container a flex container */
+    align-items: center; /* Add this to center its child elements vertically */
+    justify-content: center;
 }
 
 /* Navbar ------------------------------ */
@@ -21,7 +24,13 @@
 }
 
 .searchbox-input {
-    width: 80%;
+    width: 90%;
+}
+
+/* Tabs */
+.menutab-tab {
+    color: white;
+    font-weight: 600;
 }
 
 /* TemperatureBody ------------------------------ */
@@ -57,6 +66,7 @@
     background-color: #f73378;
     text-align: center;
     color: white;
+    margin: 0px;
 }
 
 /* Dashboard ------------------------------ */
