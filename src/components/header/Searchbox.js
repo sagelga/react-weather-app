@@ -3,8 +3,6 @@ import { styled, alpha } from '@mui/material/styles'
 import IconButton from '@mui/material/IconButton'
 import NearMeIcon from '@mui/icons-material/NearMe'
 import InputBase from '@mui/material/InputBase'
-import SearchIcon from '@mui/icons-material/Search'
-import Grid from '@mui/material/Unstable_Grid2'
 
 const Search = styled('div')(({ theme }) => ({
     color: 'black',
@@ -56,7 +54,6 @@ const Searchbox = ({ setSearchQuery, getLocation }) => {
     return (
         <div className="searchbox">
             <Search>
-                {/* <SearchIcon className="center" /> */}
                 <StyledInputBase
                     inputProps={{ 'aria-label': 'search' }}
                     placeholder="Search for a city"

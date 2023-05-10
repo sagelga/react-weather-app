@@ -1,16 +1,7 @@
 import React from 'react'
 import Container from '@mui/material/Container'
 import Paper from '@mui/material/Paper'
-import Paper from '@mui/material/Paper'
 
-const TemperatureBody = (props) => {
-    const locationName = props.weatherData.name
-    const temperature = props.weatherData.main.temp
-    const weatherCondition = props.weatherData.weather[0].description
-    const feelsLike = props.weatherData.main.feels_like
-    const humidity = props.weatherData.main.humidity
-    const metric = props.weatherMetric === 'metric' ? 'C°' : 'F°'
-    const unsplashImage = props.unsplashImage
 const TemperatureBody = (props) => {
     const locationName = props.weatherData.name
     const temperature = props.weatherData.main.temp
