@@ -1,7 +1,5 @@
 import React from 'react'
 import { styled, alpha } from '@mui/material/styles'
-import Paper from '@mui/material/Paper'
-import TextField from '@mui/material/TextField'
 import IconButton from '@mui/material/IconButton'
 import NearMeIcon from '@mui/icons-material/NearMe'
 import InputBase from '@mui/material/InputBase'
@@ -23,15 +21,15 @@ const Search = styled('div')(({ theme }) => ({
     },
 }))
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-}))
+// const SearchIconWrapper = styled('div')(({ theme }) => ({
+//     padding: theme.spacing(0, 2),
+//     height: '100%',
+//     position: 'absolute',
+//     pointerEvents: 'none',
+//     display: 'flex',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+// }))
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: 'inherit',
@@ -47,15 +45,21 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }))
 
-const Searchbox = ({ setSearchQuery, onButtonClick }) => {
+const Searchbox = ({ setSearchQuery, getLocation }) => {
     // Handle location
     const locationButtonHandler = () => {
-        onButtonClick()
+        getLocation()
     }
 
     return (
         <div className="searchbox">
             <Search>
+                <StyledInputBase
+                    inputProps={{ 'aria-label': 'search' }}
+                    placeholder="Search for a city"
+                    onChange={(event) => setSearchQuery(event.target.value)}
+                    className="searchbox-input"
+                />
                 <IconButton
                     xs="auto"
                     aria-label="location"
@@ -63,12 +67,6 @@ const Searchbox = ({ setSearchQuery, onButtonClick }) => {
                 >
                     <NearMeIcon />
                 </IconButton>
-                <StyledInputBase
-                    inputProps={{ 'aria-label': 'search' }}
-                    xs={11}
-                    placeholder="Search for a city"
-                    onChange={(event) => setSearchQuery(event.target.value)}
-                />
             </Search>
         </div>
     )

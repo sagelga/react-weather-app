@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Announcement(props) {
+const Announcement = (props) => {
     return <div className="announcement">{props.message}</div>
 }
 

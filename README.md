@@ -7,7 +7,8 @@ a weather app created in React. Powered by OpenWeatherMap and Unsplash.
 This is a React-based weather application that leverages the OpenWeatherMap API for fetching weather data and Tailwind CSS for styling.
 Additionally, it utilizes Icons8 for weather icons and Unsplash for background images. The source code is later deployed, tested, and hosted on Netlify.
 
-Visit [http://weather-dev.sagelga.com](http://weather-dev.sagelga.com/) to see the app in action.
+Visit [http://weather.sagelga.com](http://weather.sagelga.com/) to see the app in action.
+![Screenshot 2566-05-08 at 22 25 06](https://user-images.githubusercontent.com/13056824/236864847-c13e7c50-4834-46ee-a0e1-15b6b0b3d22a.png)
 
 ## Prequisites
 
@@ -41,8 +42,8 @@ graph LR
     Navbar --> WeatherUnitToggle
     Navbar --> Searchbox
     App --> TemperatureBody
-    TemperatureBody --> BasicCard
     App --> Dashboard
+    Dashboard --> BasicCard
     App --> Snackbar
     App --> Footer
 
@@ -59,7 +60,7 @@ Here's all we are going to use API for
 
 ### Unsplash API
 
--   Unsplash Image API [https://unsplash.com/developers](https://unsplash.com/developers)
+-   Unsplash Image API [https://unsplash.com/documentation#search-photos](https://unsplash.com/documentation#search-photos)
 
 ## Resources
 
@@ -71,3 +72,13 @@ Here's all we are going to use API for
 -   React Material UI [https://mui.com/](https://mui.com/)
 -   Netlify [https://www.netlify.com/](https://www.netlify.com/)
 -   Netlify CLI [https://docs.netlify.com/cli/get-started/](https://docs.netlify.com/cli/get-started/)
+
+## Tools
+
+Here's all the tools I used to develop this project
+
+-   Netlify
+-   Postman
+-   Visual Studio Code
+-   GitHub
+-   Cloudflare

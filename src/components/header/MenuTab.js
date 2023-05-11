@@ -3,6 +3,7 @@ import React from 'react'
 import Box from '@mui/material/Box'
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
+import Container from '@mui/material/Container'
 
 const MenuTab = () => {
     const [value, setValue] = React.useState(0)
@@ -12,9 +13,8 @@ const MenuTab = () => {
     }
 
     return (
-        <Box sx={{ width: '100%' }}>
+        <Box className="menu-tab-container" sx={{ width: '100%' }}>
             <Tabs
-                centered
                 value={value}
                 onChange={handleChange}
                 className="menu-tab"
@@ -23,7 +23,7 @@ const MenuTab = () => {
             >
                 <Tab
                     label={
-                        <div>
+                        <div className="menutab-tab">
                             <img
                                 src="https://img.icons8.com/fluency/14/null/partly-cloudy-day.png"
                                 alt="Rain"
@@ -35,7 +35,7 @@ const MenuTab = () => {
                 />
                 <Tab
                     label={
-                        <div>
+                        <div className="menutab-tab">
                             <img
                                 src="https://img.icons8.com/fluency/14/null/forage.png"
                                 alt="Rain"
@@ -47,7 +47,7 @@ const MenuTab = () => {
                 />
                 <Tab
                     label={
-                        <div>
+                        <div className="menutab-tab">
                             <img
                                 src="https://img.icons8.com/fluency/14/null/sun.png"
                                 alt="Rain"
@@ -59,7 +59,7 @@ const MenuTab = () => {
                 />
                 <Tab
                     label={
-                        <div>
+                        <div className="menutab-tab">
                             <img
                                 src="https://img.icons8.com/fluency/14/null/wind.png"
                                 alt="Rain"
@@ -71,7 +71,7 @@ const MenuTab = () => {
                 />
                 <Tab
                     label={
-                        <div>
+                        <div className="menutab-tab">
                             <img
                                 src="https://img.icons8.com/fluency/14/null/water.png"
                                 alt="Rain"
