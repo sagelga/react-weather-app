@@ -9,33 +9,34 @@ const TemperatureBody = (props) => {
     const feelsLike = props.weatherData.main.feels_like
     const humidity = props.weatherData.main.humidity
     const metric = props.weatherMetric === 'metric' ? 'C°' : 'F°'
-    const unsplashImage = props.unsplashImage
-
-    // If there is no value for the name, return an empty div
-    if (props.weatherData.name === null) {
-        return <div></div>
-    }
+    const unsplashImage = props.unsplashImage.urls.regular
+    const unsplashCredits = props.unsplashImage.user.name
 
     return (
         <Container className="container">
             <div className="paper-container">
-                <Paper className="body-temperature-main-card">
-                    <h2 className="city">Currently in {locationName}, it's</h2>
-                    <h1 className="current">
-                        {temperature} {metric} with {weatherCondition}
-                    </h1>
-                    <h2>
-                        Feels like {feelsLike} {metric} with {humidity}%
-                        humidity
-                    </h2>
-                </Paper>
+                {/* <Paper className="body-temperature-main-card"> */}
+                <h2 className="city">Currently in {locationName}, it's</h2>
+                <h1 className="current">
+                    {temperature} {metric} with {weatherCondition}
+                </h1>
+                <h2>
+                    Feels like {feelsLike} {metric} with {humidity}% humidity
+                </h2>
+                {/* </Paper> */}
             </div>
-            <img
-                src={unsplashImage}
-                alt="weather"
-                className="weather-image"
-                height="400px"
-            />
+            <figure>
+                <img
+                    src={unsplashImage}
+                    alt="city landscapes created by Unsplash user"
+                    className="weather-image"
+                    height="400px"
+                    loading="lazy"
+                />
+                <figcaption className="image-credit">
+                    Photo by {unsplashCredits} on Unsplash
+                </figcaption>
+            </figure>
         </Container>
     )
 }
