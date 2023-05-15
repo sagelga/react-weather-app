@@ -2,7 +2,6 @@ import React from 'react'
 import { useState } from 'react'
 import { Blurhash } from 'react-blurhash'
 import Container from '@mui/material/Container'
-import Paper from '@mui/material/Paper'
 
 const TemperatureBody = (props) => {
     // for loading blurhash to be placeholder when the image from Unsplash is not loaded yet
@@ -40,6 +39,7 @@ const TemperatureBody = (props) => {
                 {/* Load BlurHash when the splash have not loaded yet */}
                 {!isSplashLoaded && (
                     <Blurhash
+                        className="weather-image"
                         hash={unsplashImageHash}
                         style={{ width: '100vw' }}
                         height={400}

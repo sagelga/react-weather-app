@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css'
 import { initialWeatherData, initialUnsplashImage } from './data'
 import Announcement from './components/header/Announcement'
@@ -102,8 +102,8 @@ const App = () => {
                     data.results[0].user.name,
                 ]
                 setUnsplashImage(payload)
-                console.log('getUnsplashImage')
-                console.log(payload)
+                console.log('Unsplash Image retrieved')
+                // console.log(payload)
             } else if (response.status === 404) {
                 setSearchStatus('Sorry, we could not find the image')
             } else {
