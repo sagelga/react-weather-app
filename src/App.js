@@ -1,7 +1,6 @@
-import React, { useCallback } from 'react'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
 import './App.css'
-import { initialWeatherData, initialUnsplashData } from './data'
+import { initialWeatherData, initialUnsplashImage } from './data'
 import Announcement from './components/header/Announcement'
 import Navbar from './components/header/Navbar'
 import TemperatureBody from './components/body/TemperatureBody'
@@ -22,13 +21,14 @@ const service = {
 
 // Main App
 const App = () => {
+    // Set state to variables
     const [searchStatus, setSearchStatus] = useState('')
     const [searchQuery, setSearchQuery] = useState('')
     const [weatherData, setWeatherData] = useState(initialWeatherData)
     const [weatherMetric, setWeatherMetric] = useState('metric')
     const [weatherForecastData, setWeatherForecastData] =
         useState(initialWeatherData)
-    const [unsplashUrl, setUnsplashUrl] = useState(initialUnsplashData)
+    const [unsplashImage, setUnsplashImage] = useState(initialUnsplashImage)
 
     // Get weather data from OpenWeatherMap API by search query
     const getWeatherDataFromQuery = async (query) => {
@@ -90,13 +90,20 @@ const App = () => {
     }
 
     // Get unsplash image that matches the user's searchQuery input
-    const getUnsplashUrl = async (query) => {
+    const getUnsplashImage = async (query) => {
         const url = `${service.unsplash.url}?client_id=${service.unsplash.key}&query=${query}%20city&per_page=2&orientation=landscape`
         const response = await fetch(url).then(async (response) => {
             if (response.ok) {
                 setSearchStatus('')
                 const data = await response.json()
-                setUnsplashUrl(data.results[0])
+                const payload = [
+                    data.results[0].urls.regular,
+                    data.results[0].blur_hash,
+                    data.results[0].user.name,
+                ]
+                setUnsplashImage(payload)
+                console.log('getUnsplashImage')
+                console.log(payload)
             } else if (response.status === 404) {
                 setSearchStatus('Sorry, we could not find the image')
             } else {
@@ -114,22 +121,31 @@ const App = () => {
     }
 
     // Switch between imperial and metric units of measurement
-    const weatherMetricHandler = (data) => {
+    // and triggers the data update on the weather and forecast data
+    const weatherMetricToggle = (data) => {
         if (data === 'metric') {
             setWeatherMetric('imperial')
         } else {
             setWeatherMetric('metric')
         }
+
+        getWeatherDataFromQuery(searchQuery)
     }
 
-    // Fetch OpenWeatherMap API using search query when searchQuery is changed
+    // Fetch OpenWeather API on weather and forecast, including Unsplash when the searchQuery state is change
     useEffect(() => {
-        // console.log(searchQuery)
-        if (searchQuery !== '') {
-            getWeatherDataFromQuery(searchQuery)
-            getUnsplashUrl(searchQuery)
-        }
-    }, [searchQuery, weatherMetric])
+        // set timer to 500 ms to delay the function call
+        const timer = setTimeout(() => {
+            // console.log(searchQuery)
+            console.log('useEffect searchQuery')
+            if (searchQuery !== '') {
+                getWeatherDataFromQuery(searchQuery)
+                getUnsplashImage(searchQuery)
+            }
+        }, 500)
+
+        return () => clearTimeout(timer)
+    }, [searchQuery])
 
     return (
         <div className="App">
@@ -137,14 +153,14 @@ const App = () => {
                 <Navbar
                     setSearchQuery={setSearchQuery}
                     getLocation={getDataFromLocation}
-                    weatherMetricHandler={weatherMetricHandler}
+                    weatherMetricToggle={weatherMetricToggle}
                 />
                 <Announcement message={searchStatus} />
             </header>
             <TemperatureBody
                 weatherData={weatherData}
                 weatherMetric={weatherMetric}
-                unsplashImage={unsplashUrl}
+                unsplashImage={unsplashImage}
             />
             <Dashboard weatherData={weatherData} />
             <footer>
