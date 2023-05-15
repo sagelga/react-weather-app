@@ -72,6 +72,8 @@ Here's all we are going to use API for
 -   React Material UI [https://mui.com/](https://mui.com/)
 -   Netlify [https://www.netlify.com/](https://www.netlify.com/)
 -   Netlify CLI [https://docs.netlify.com/cli/get-started/](https://docs.netlify.com/cli/get-started/)
+-   BlurHash [https://blurha.sh/](https://blurha.sh/)
+-   BlurHash for ReactJS [https://github.com/woltapp/react-blurhash](https://github.com/woltapp/react-blurhash)
 
 ## Tools
 

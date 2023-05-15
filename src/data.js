@@ -49,10 +49,8 @@ export const initialWeatherData = {
     cod: 0,
 }
 
-export const initialUnsplashData = {
-    urls: {
-        regular:
-            'https://images.unsplash.com/photo-1617381519460-d87050ddeb92?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDU3Mjd8MHwxfHNlYXJjaHwxfHxjaXR5JTIwYXJjaGl0ZWN0dXJlfGVufDB8MHx8fDE2ODM4ODg0NDd8MA&ixlib=rb-4.0.3&q=80&w=1080',
-    },
-    user: { name: 'Guy Barzilay' },
-}
+export const initialUnsplashImage = [
+    'https://images.unsplash.com/photo-1617381519460-d87050ddeb92?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDU3Mjd8MHwxfHNlYXJjaHwxfHxjaXR5JTIwYXJjaGl0ZWN0dXJlfGVufDB8MHx8fDE2ODM4ODg0NDd8MA&ixlib=rb-4.0.3&q=80&w=1080',
+    'L~MR3~%1jYo0~qoJflj[MxRjaya{',
+    'Guy Barzilay',
+]
