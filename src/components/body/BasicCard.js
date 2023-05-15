@@ -21,10 +21,10 @@ const BasicCard = (props) => {
             <Card variant="outlined">
                 <CardContent>
                     <img
-                        src={props.icon}
+                        src={props.icon + '.png'}
                         alt="Card Icon"
-                        height={props.iconSize + 'px'}
-                        width={props.iconSize + 'px'}
+                        height={props.iconSize}
+                        width={props.iconSize}
                     />
                     <Typography variant="h5" component="div">
                         {dataValue}
@@ -32,6 +32,22 @@ const BasicCard = (props) => {
                     <Typography sx={{ mb: 1.5 }} color="text.secondary">
                         {props.title}
                     </Typography>
+                    {props.desc && (
+                        <Typography
+                            sx={{ mb: 1.5, fontSize: 12 }}
+                            color="text.secondary"
+                        >
+                            {props.desc}
+                        </Typography>
+                    )}
+                    {props.unit && (
+                        <Typography
+                            sx={{ fontSize: 12 }}
+                            color="text.secondary"
+                        >
+                            Unit: {props.unit}
+                        </Typography>
+                    )}
                 </CardContent>
             </Card>
         </div>
