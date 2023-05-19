@@ -24,7 +24,7 @@ const TemperatureBody = (props) => {
     const unsplashCredits = props.unsplashImage[2]
 
     return (
-        <Container className="container">
+        <div className="container">
             <div className="paper-container">
                 <h2 className="city">Currently in {weatherLocation}, it's</h2>
                 <h1 className="current">
@@ -58,7 +58,7 @@ const TemperatureBody = (props) => {
                     Photo by {unsplashCredits} on Unsplash
                 </figcaption>
             </figure>
-        </Container>
+        </div>
     )
 }
 export default TemperatureBody

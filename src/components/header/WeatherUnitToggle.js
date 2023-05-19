@@ -2,22 +2,20 @@ import React from 'react'
 import ToggleButton from '@mui/material/ToggleButton'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
 
-// handles click from the weather unit button
-const clickHandler = () => {}
-
 const WeatherUnitToggle = (props) => {
-    const [alignment, setAlignment] = React.useState('left')
+    const [option, setOption] = React.useState('left')
 
-    const handleAlignment = (event, newAlignment) => {
-        setAlignment(newAlignment)
+    const handleoption = (event, newoption) => {
+        setOption(newoption)
     }
 
     return (
         <ToggleButtonGroup
-            value={alignment}
+            color="secondary"
+            value={option}
             exclusive
-            onChange={handleAlignment}
-            aria-label="text alignment"
+            onChange={handleoption}
+            aria-label="outlined primary button group"
         >
             <ToggleButton value="left" aria-label="left aligned">
                 C°

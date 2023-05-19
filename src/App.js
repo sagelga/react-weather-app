@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import './App.css'
-import { initialWeatherData, initialUnsplashImage } from './data'
+import { initialUnsplashImage, initialWeatherData } from './data'
 import Announcement from './components/header/Announcement'
 import Navbar from './components/header/Navbar'
 import TemperatureBody from './components/body/TemperatureBody'
@@ -12,6 +13,10 @@ const service = {
     openWeather: {
         current: 'https://api.openweathermap.org/data/2.5/weather',
         forecast: 'https://api.openweathermap.org/data/2.5/forecast',
+        geoCode: {
+            direct: 'https://api.openweathermap.org/geo/1.0/direct',
+            reverse: 'https://api.openweathermap.org/geo/1.0/reverse',
+        },
         key: process.env.REACT_APP_OPEN_WEATHER_API_KEY,
     },
     unsplash: {
@@ -25,150 +30,144 @@ const App = () => {
     // Set state to variables
     const [searchStatus, setSearchStatus] = useState('')
     const [searchQuery, setSearchQuery] = useState('')
+    const [geolocation, setGeolocation] = useState({ lat: 0, lon: 0 })
     const [weatherData, setWeatherData] = useState(initialWeatherData)
     const [weatherMetric, setWeatherMetric] = useState('metric')
     const [weatherForecastData, setWeatherForecastData] =
         useState(initialWeatherData)
     const [unsplashImage, setUnsplashImage] = useState(initialUnsplashImage)
-
-    // Get weather data from OpenWeatherMap API by search query
-    const getWeatherDataFromQuery = async (query) => {
-        // Fetch data from OpenWeatherMap API: https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&APPID=efefefefefefefefefe
-        const response = await fetch(
-            `${service.openWeather.current}?q=${query}&units=${weatherMetric}&APPID=${service.openWeather.key}`
-        )
-            .then(async (response) => {
-                if (response.ok) {
-                    setSearchStatus('')
-                    const data = await response.json()
-                    setWeatherData(data)
-                } else if (response.status === 404) {
-                    setSearchStatus('Sorry, we could not find your location')
-                } else {
-                    console.error(response.statusText)
-                    setSearchStatus(
-                        `Sorry, we are experiencing technical difficulties with Open Weather (HTTP code ${response.status})`
-                    )
-                }
-            })
-            .catch((err) => {
-                console.error(err)
-                setSearchStatus(
-                    'Sorry, we are experiencing error fetching weather data'
-                )
-            })
-    }
+    const [darkMode, setDarkMode] = useState(false)
 
     // Get weather data from OpenWeatherMap API by user's location
-    const getWeatherDataFromLocation = async () => {
-        if (navigator.geolocation) {
-            // @todo : Replace this with spinner
-            setSearchStatus('Retriving location')
+    const getWeatherData = async (geolocation) => {
+        const url = `${service.openWeather.current}?lat=${geolocation.lat}&lon=${geolocation.lon}&units=${weatherMetric}&appid=${service.openWeather.key}`
+        const data = axios.get(url).then((response) => response.data)
+        return data
+    }
 
-            navigator.geolocation.getCurrentPosition(async (position) => {
-                const lat = position.coords.latitude
-                const lon = position.coords.longitude
-                try {
-                    const response = await fetch(
-                        `${service.openWeather.current}?lat=${lat}&lon=${lon}&units=${weatherMetric}&APPID=${service.openWeather.key}`
-                    )
-                    const data = await response.json()
-                    setWeatherData(data)
-                    setSearchStatus('')
-                } catch (err) {
-                    setWeatherData(initialWeatherData)
-                    console.error(err)
-                    setSearchStatus(
-                        'Sorry, we are experiencing error fetching geolocation weather data'
-                    )
-                }
-            })
-        } else {
-            setSearchStatus(
-                'Sorry, we could not retrive your location. Enable geolocation'
-            )
-        }
+    // Get forecast weather data from OpenWeatherMap API by search query
+    const getForecastWeatherData = (geolocation) => {
+        // Example OpenWeatherMap API URL: https://api.openweathermap.org/data/2.5/forecast?lat=35&lon=139&units=metric&appid=b6907d289e10d714a6e88b30761fae22
+        const url = `${service.openWeather.forecast}?lat=${geolocation.lat}&lon=${geolocation.lon}&units=${weatherMetric}&appid=${service.openWeather.key}`
+        const data = axios.get(url).then((response) => response.data.list)
+        return data
     }
 
     // Get unsplash image that matches the user's searchQuery input
-    const getUnsplashImage = async (query) => {
-        const url = `${service.unsplash.url}?client_id=${service.unsplash.key}&query=${query}%20city&per_page=2&orientation=landscape`
-        const response = await fetch(url).then(async (response) => {
-            if (response.ok) {
-                setSearchStatus('')
-                const data = await response.json()
-                const payload = [
-                    data.results[0].urls.regular,
-                    data.results[0].blur_hash,
-                    data.results[0].user.name,
-                ]
-                setUnsplashImage(payload)
-                console.log('Unsplash Image retrieved')
-                // console.log(payload)
-            } else if (response.status === 404) {
-                setSearchStatus('Sorry, we could not find the image')
-            } else {
-                console.error(response.statusText)
-                setSearchStatus(
-                    `Sorry, we are experiencing technical difficulties with Unsplash (HTTP code ${response.status})`
-                )
+    const getUnsplashImage = (searchQuery) => {
+        const url = `${service.unsplash.url}?client_id=${service.unsplash.key}&query=${searchQuery}%20city&per_page=2&orientation=landscape`
+        const data = axios.get(url).then((response) => response.data)
+        const payload = [
+            data.results[0].urls.regular,
+            data.results[0].blur_hash,
+            data.results[0].user.name,
+        ]
+        return payload
+    }
+
+    // Converts latitude and longitude to city name
+    const decodeGeocoding = async (geolocation) => {
+        const limit = 1
+        const url = `${service.openWeather.geoCode.reverse}?lat=${geolocation.lat}&lon=${geolocation.lon}&limit=${limit}&appid=${service.openWeather.key}`
+        const data = axios.get(url).then((response) => response.data)
+        const cityName = data[0].name
+        return cityName
+    }
+
+    // Retrieves user's location by their IP address
+    const getUserLocationUsingIp = async () => {
+        // Get the user's IP address.
+        const ipAddress = navigator.ip
+
+        // Make a request to the Geolocation API to get the user's location.
+        const response = fetch(`https://ipinfo.io/${ipAddress}`)
+            .then((response) => response.json())
+            .then((data) => {
+                // Get the user's latitude and longitude.
+                const lat = data.latitude
+                const lon = data.longitude
+
+                return { lat: lat, lon: lon }
+            })
+    }
+
+    // When searchQuery or geolocation is changed, trigger this useEffect
+    useEffect(() => {
+        const fetchData = async () => {
+            // Skip the execution if there is no given geolocation given (or set as 0)
+            if (geolocation.lat !== 0 && geolocation.lon !== 0) {
+                // Fill in the searchQuery if not given (i.e., provoked by IP address or user's location)
+                if (!searchQuery) {
+                    try {
+                        await decodeGeocoding(geolocation).then((cityName) => {
+                            console.log(cityName)
+                            setSearchQuery(cityName)
+                        })
+                    } catch (error) {
+                        // Handle any errors that occurred during the API requests
+                        console.error(error)
+                    }
+                }
+
+                try {
+                    await getWeatherData(geolocation).then((weatherData) => {
+                        console.log(weatherData)
+                        // setWeatherData(weatherData);
+                    })
+
+                    await getForecastWeatherData(geolocation).then(
+                        (weatherForecastData) => {
+                            console.log(weatherForecastData)
+                            // setWeatherData(weatherData);
+                        }
+                    )
+
+                    await getUnsplashImage(searchQuery).then(
+                        (unsplashImage) => {
+                            console.log(unsplashImage)
+                            // setWeatherData(weatherData);
+                        }
+                    )
+
+                    // const weatherForecastData = await getForecastWeatherData(geolocation);
+                    // console.log(weatherForecastData);
+                    // // setWeatherForecastData(weatherForecastData);
+                    //
+                    // const unsplashImage = await getUnsplashImage(searchQuery);
+                    // console.log(unsplashImage);
+                    // // setUnsplashImage(unsplashImage);
+                } catch (error) {
+                    // Handle any errors that occurred during the API requests
+                    console.error(error)
+                }
             }
-        })
-    }
-
-    // Calls getWeatherDataFromLocation and getUnsplashImage
-    const getDataFromLocation = () => {
-        getWeatherDataFromLocation()
-    }
-
-    // Switch between imperial and metric units of measurement
-    // and triggers the data update on the weather and forecast data
-    const weatherMetricToggle = (data) => {
-        if (data === 'metric') {
-            setWeatherMetric('imperial')
-        } else {
-            setWeatherMetric('metric')
         }
 
-        getWeatherDataFromQuery(searchQuery)
-    }
-
-    // Fetch OpenWeather API on weather and forecast, including Unsplash when the searchQuery state is change
-    useEffect(() => {
-        // set timer to 500 ms to delay the function call
-        const timer = setTimeout(() => {
-            // console.log(searchQuery)
-            console.log('useEffect searchQuery')
-            if (searchQuery !== '') {
-                getWeatherDataFromQuery(searchQuery)
-                getUnsplashImage(searchQuery)
-            }
-        }, 500)
-
-        return () => clearTimeout(timer)
-    }, [searchQuery])
+        fetchData()
+    }, [searchQuery, geolocation])
 
     return (
         <div className="App">
-            <header>
-                <Navbar
-                    setSearchQuery={setSearchQuery}
-                    getLocation={getDataFromLocation}
-                    weatherMetricToggle={weatherMetricToggle}
-                />
-                <Announcement message={searchStatus} />
-            </header>
+            <Navbar
+                searchQuery={(e) => {
+                    setSearchQuery(e)
+                }}
+                geolocation={(e) => setGeolocation(e)}
+                announceMessage={(e) => setSearchStatus(e)}
+                darkMode={(e) => setDarkMode(e)}
+                weatherMetric={(e) => setWeatherMetric(e)}
+            />
+            <Announcement announceMessage={searchStatus} />
 
             <TemperatureBody
                 weatherData={weatherData}
                 weatherMetric={weatherMetric}
                 unsplashImage={unsplashImage}
             />
-            <TemperatureForecast />
+            <TemperatureForecast weatherForecastData={weatherForecastData} />
             <Dashboard weatherData={weatherData} />
-            <footer>
-                <Footer />
-            </footer>
+
+            <Footer />
         </div>
     )
 }

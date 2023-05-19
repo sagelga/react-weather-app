@@ -55,8 +55,15 @@
 }
 
 /* TemperatureBody ------------------------------ */
-.container {
+.container > figure {
     position: relative;
+    padding: 0px;
+    margin: 0px;
+}
+.image-credit {
+    margin: 10px;
+    text-align: right;
+    z-index: 1;
 }
 
 .paper-container {
@@ -120,4 +127,9 @@
 
 .menu-tab {
     margin-left: 30px;
+}
+
+/* Temperature Forecast */
+.temperature-forecast {
+    padding: 15px;
 }
