@@ -33,7 +33,6 @@ const Dashboard = (props) => {
 
     const iconSize = 42
     const iconsBaseUrl = `https://img.icons8.com/fluency/${iconSize}/null/`
-    const iconsSuffix = '.png'
 
     const sunRise = epochToTime(props.weatherData.sys.sunrise)
     const sunSet = epochToTime(props.weatherData.sys.sunset)
@@ -179,7 +178,7 @@ const Dashboard = (props) => {
                         value: country,
                     },
                 ].map((item) => (
-                    <Grid xs={4} md={3} lg={2}>
+                    <Grid xs={4} md={3} lg={2} key={item.id}>
                         <BasicCard
                             icon={iconsBaseUrl + item.icon}
                             iconSize={iconSize}
