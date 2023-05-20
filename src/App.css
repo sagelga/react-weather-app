@@ -60,6 +60,7 @@
     padding: 0px;
     margin: 0px;
 }
+
 .image-credit {
     margin: 10px;
     text-align: right;
@@ -132,4 +133,16 @@
 /* Temperature Forecast */
 .temperature-forecast {
     padding: 15px;
+}
+
+.forecastCard {
+    height: 200px;
+}
+
+.forecastCardGrid {
+    height: 220px;
+}
+
+.basic-card {
+    height: 225px;
 }

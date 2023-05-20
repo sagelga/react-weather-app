@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+Thai&display=swap');
 
 :root {
+    --primary-color: #3f51b5;
+    --secondary-color: #2196f3;
     font-family: 'IBM Plex Sans Thai', sans-serif;
 }
 

@@ -1,14 +1,7 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Blurhash } from 'react-blurhash'
-import Container from '@mui/material/Container'
 
 const TemperatureBody = (props) => {
-    // for loading blurhash to be placeholder when the image from Unsplash is not loaded yet
-    function handleImageLoad() {
-        setIsSplashLoaded(true)
-    }
-
     const [isSplashLoaded, setIsSplashLoaded] = useState(false)
 
     // Open Weather
@@ -22,6 +15,11 @@ const TemperatureBody = (props) => {
     const unsplashImage = props.unsplashImage[0]
     const unsplashImageHash = props.unsplashImage[1]
     const unsplashCredits = props.unsplashImage[2]
+
+    // for loading blurhash to be placeholder when the image from Unsplash is not loaded yet
+    function handleImageLoad() {
+        setIsSplashLoaded(true)
+    }
 
     return (
         <div className="container">
