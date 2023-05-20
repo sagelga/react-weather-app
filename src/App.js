@@ -33,8 +33,7 @@ const App = () => {
     const [geolocation, setGeolocation] = useState({ lat: 0, lon: 0 })
     const [weatherData, setWeatherData] = useState(initialWeatherData)
     const [weatherMetric, setWeatherMetric] = useState('metric')
-    const [weatherForecastData, setWeatherForecastData] =
-        useState(initialWeatherData)
+    const [weatherForecastData, setWeatherForecastData] = useState([])
     const [unsplashImage, setUnsplashImage] = useState(initialUnsplashImage)
     const [darkMode, setDarkMode] = useState(false)
 
@@ -48,7 +47,8 @@ const App = () => {
     // Get forecast weather data from OpenWeatherMap API by search query
     const getForecastWeatherData = (geolocation) => {
         // Example OpenWeatherMap API URL: https://api.openweathermap.org/data/2.5/forecast?lat=35&lon=139&units=metric&appid=b6907d289e10d714a6e88b30761fae22
-        const url = `${service.openWeather.forecast}?lat=${geolocation.lat}&lon=${geolocation.lon}&units=${weatherMetric}&appid=${service.openWeather.key}`
+        const limit = 12
+        const url = `${service.openWeather.forecast}?lat=${geolocation.lat}&lon=${geolocation.lon}&units=${weatherMetric}&cnt=${limit}&appid=${service.openWeather.key}`
         const data = axios.get(url).then((response) => response.data.list)
         return data
     }
@@ -62,6 +62,7 @@ const App = () => {
             data.results[0].blur_hash,
             data.results[0].user.name,
         ]
+        console.log(payload)
         return payload
     }
 
@@ -110,34 +111,22 @@ const App = () => {
                 }
 
                 try {
-                    await getWeatherData(geolocation).then((weatherData) => {
-                        console.log(weatherData)
-                        // setWeatherData(weatherData);
+                    await getWeatherData(geolocation).then((data) => {
+                        console.log(data)
+                        setWeatherData(data)
                     })
 
-                    await getForecastWeatherData(geolocation).then(
-                        (weatherForecastData) => {
-                            console.log(weatherForecastData)
-                            // setWeatherData(weatherData);
-                        }
-                    )
+                    await getForecastWeatherData(geolocation).then((data) => {
+                        // console.log(data)
+                        setWeatherForecastData(data)
+                        console.log(weatherForecastData)
+                    })
 
-                    await getUnsplashImage(searchQuery).then(
-                        (unsplashImage) => {
-                            console.log(unsplashImage)
-                            // setWeatherData(weatherData);
-                        }
-                    )
-
-                    // const weatherForecastData = await getForecastWeatherData(geolocation);
-                    // console.log(weatherForecastData);
-                    // // setWeatherForecastData(weatherForecastData);
-                    //
-                    // const unsplashImage = await getUnsplashImage(searchQuery);
-                    // console.log(unsplashImage);
-                    // // setUnsplashImage(unsplashImage);
+                    await getUnsplashImage(searchQuery).then((data) => {
+                        console.log(data)
+                        setUnsplashImage(data)
+                    })
                 } catch (error) {
-                    // Handle any errors that occurred during the API requests
                     console.error(error)
                 }
             }

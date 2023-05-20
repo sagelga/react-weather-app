@@ -62,6 +62,8 @@ Here's all we are going to use API for
 -   Current Weather Data [https://openweathermap.org/current](https://openweathermap.org/current)
 -   5 days Forecast Weather Data [https://openweathermap.org/forecast5](https://openweathermap.org/forecast5)
 -   Geocoding API [https://openweathermap.org/api/geocoding-api](https://openweathermap.org/api/geocoding-api)
+-   Weather Conditions Icon
+    API [https://openweathermap.org/weather-conditions](https://openweathermap.org/weather-conditions)
 
 ### Unsplash API
 
