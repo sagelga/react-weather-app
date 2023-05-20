@@ -4,8 +4,10 @@ a weather app created in React. Powered by OpenWeatherMap and Unsplash.
 
 ## Description
 
-This is a React-based weather application that leverages the OpenWeatherMap API for fetching weather data and Tailwind CSS for styling.
-Additionally, it utilizes Icons8 for weather icons and Unsplash for background images. The source code is later deployed, tested, and hosted on Netlify.
+This is a React-based weather application that leverages the OpenWeatherMap API for fetching weather data and Tailwind
+CSS for styling.
+Additionally, it utilizes Icons8 for weather icons and Unsplash for background images. The source code is later
+deployed, tested, and hosted on Netlify.
 
 Visit [http://weather.sagelga.com](http://weather.sagelga.com/) to see the app in action.
 ![Screenshot 2566-05-08 at 22 25 06](https://user-images.githubusercontent.com/13056824/236864847-c13e7c50-4834-46ee-a0e1-15b6b0b3d22a.png)
@@ -42,6 +44,8 @@ graph LR
     Navbar --> WeatherUnitToggle
     Navbar --> Searchbox
     App --> TemperatureBody
+    App --> TemperatureForecast
+    TemperatureForecast --> ForecastCard
     App --> Dashboard
     Dashboard --> BasicCard
     App --> Snackbar
@@ -57,10 +61,18 @@ Here's all we are going to use API for
 
 -   Current Weather Data [https://openweathermap.org/current](https://openweathermap.org/current)
 -   5 days Forecast Weather Data [https://openweathermap.org/forecast5](https://openweathermap.org/forecast5)
+-   Geocoding API [https://openweathermap.org/api/geocoding-api](https://openweathermap.org/api/geocoding-api)
+-   Weather Conditions Icon
+    API [https://openweathermap.org/weather-conditions](https://openweathermap.org/weather-conditions)
 
 ### Unsplash API
 
--   Unsplash Image API [https://unsplash.com/documentation#search-photos](https://unsplash.com/documentation#search-photos)
+-   Unsplash Image
+    API [https://unsplash.com/documentation#search-photos](https://unsplash.com/documentation#search-photos)
+
+### IP Info API
+
+-   IP Info address data [https://ipinfo.io](https://ipinfo.io)
 
 ## Resources
 
@@ -74,6 +86,7 @@ Here's all we are going to use API for
 -   Netlify CLI [https://docs.netlify.com/cli/get-started/](https://docs.netlify.com/cli/get-started/)
 -   BlurHash [https://blurha.sh/](https://blurha.sh/)
 -   BlurHash for ReactJS [https://github.com/woltapp/react-blurhash](https://github.com/woltapp/react-blurhash)
+-   Axios [https://github.com/axios/axios](https://github.com/axios/axios)
 
 ## Tools
 

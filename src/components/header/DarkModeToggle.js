@@ -52,7 +52,17 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     },
 }))
 
-const DarkModeToggle = () => {
+const DarkModeToggle = (props) => {
+    // Switch between imperial and metric units of measurement and triggers the data update
+    const weatherMetricToggleHandler = (event) => {
+        if (event.target.value === 'metric') {
+            props.darkMode('imperial')
+        } else {
+            props.darkMode('metric')
+            // setWeatherMetric('metric')
+        }
+    }
+
     return <FormControlLabel control={<MaterialUISwitch sx={{ m: 1 }} />} />
 }
 

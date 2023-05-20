@@ -7,7 +7,13 @@ import DarkModeToggle from './DarkModeToggle'
 import WeatherUnitToggle from './WeatherUnitToggle'
 import MenuTab from './MenuTab'
 
-const Navbar = ({ setSearchQuery, getLocation }) => {
+const Navbar = ({
+    searchQuery,
+    geolocation,
+    announceMessage,
+    darkMode,
+    weatherUnit,
+}) => {
     return (
         <div>
             <Box>
@@ -21,13 +27,14 @@ const Navbar = ({ setSearchQuery, getLocation }) => {
                         </Grid>
                         <Grid item xs={10}>
                             <Searchbox
-                                setSearchQuery={setSearchQuery}
-                                getLocation={getLocation}
+                                searchQuery={searchQuery}
+                                geolocation={geolocation}
+                                announceMessage={announceMessage}
                             />
                         </Grid>
                         <Grid item className="navbar-nightmode center">
-                            <DarkModeToggle />
-                            <WeatherUnitToggle />
+                            <DarkModeToggle darkMode={darkMode} />
+                            <WeatherUnitToggle weatherMetric={weatherUnit} />
                         </Grid>
                     </Grid>
                 </Appbar>

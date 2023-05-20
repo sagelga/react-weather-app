@@ -6,7 +6,7 @@ export const initialWeatherData = {
     },
     weather: [
         {
-            id: 0,
+            id: 801,
             main: '',
             description: '',
             icon: '',
