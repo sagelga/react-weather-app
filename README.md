@@ -10,7 +10,8 @@ Additionally, it utilizes Icons8 for weather icons and Unsplash for background i
 deployed, tested, and hosted on Netlify.
 
 Visit [http://weather.sagelga.com](http://weather.sagelga.com/) to see the app in action.
-![Screenshot 2566-05-08 at 22 25 06](https://user-images.githubusercontent.com/13056824/236864847-c13e7c50-4834-46ee-a0e1-15b6b0b3d22a.png)
+
+![Screenshot 2566-05-21 at 20 57 59](https://github.com/sagelga/weather/assets/13056824/a54d70b3-20e4-4fe9-a3fa-beac6bc6b25c)
 
 ## Prequisites
 
