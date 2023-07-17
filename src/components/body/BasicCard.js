@@ -29,12 +29,12 @@ const BasicCard = (props) => {
                     <Typography variant="h5" component="div">
                         {dataValue}
                     </Typography>
-                    <Typography sx={{mb: 1.5}} color="text.secondary">
+                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
                         {props.title}
                     </Typography>
                     {props.desc && (
                         <Typography
-                            sx={{mb: 1.5, fontSize: 12}}
+                            sx={{ mb: 1.5, fontSize: 12 }}
                             color="text.secondary"
                         >
                             {props.desc}
@@ -42,7 +42,7 @@ const BasicCard = (props) => {
                     )}
                     {props.unit && (
                         <Typography
-                            sx={{fontSize: 12}}
+                            sx={{ fontSize: 12 }}
                             color="text.secondary"
                         >
                             Unit: {props.unit}
