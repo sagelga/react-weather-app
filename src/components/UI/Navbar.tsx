@@ -3,9 +3,9 @@ import Searchbox from './Searchbox'
 import Box from '@mui/material/Box'
 import Appbar from '@mui/material/AppBar'
 import Grid from '@mui/material/Grid'
-import DarkModeToggle from './DarkModeToggle'
-import WeatherUnitToggle from './WeatherUnitToggle'
-import MenuTab from './MenuTab'
+import DarkModeToggle from '../header/DarkModeToggle'
+import WeatherUnitToggle from '../header/WeatherUnitToggle'
+import MenuTab from '../header/MenuTab'
 
 const Navbar = ({
     searchQuery,
